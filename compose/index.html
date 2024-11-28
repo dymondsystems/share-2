@@ -40,10 +40,13 @@
     #messagePreview {
       border: 1px solid black;
       padding: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 0px;
       width:400px;
       height:200px;
     }
+    .btn{
+      margin:1px;
+      }
   </style>
 </head>
 <body>
@@ -62,12 +65,13 @@
     <input type="email" id="email1" name="email1" placeholder=" Email address">
     
     <button type="button" class="btn btn-success pushme3 with-color" data-toggle="collapse" data-target="#demo">Add contact</button>
-    <br>
-    <br>
+   
+   
     
     
   <div id="demo" class="collapse">
   <button type="submit" class="btn btn-primary" data-target="#" data-toggle="collapse">Generate message</button>
+  <br>
   <br>
   <p> Before you generate your message... Can you please add one more? Pretty please? Come on, don't make me beg</p>
     <label for="email2"></label>
@@ -75,8 +79,8 @@
     
     
     <button type="button" class="btn btn-success pushme3 with-color" data-toggle="collapse" data-target="#demo2">Add another</button>
-    
-    <br>
+   <br>
+    <br> 
   <div id="demo2" class="collapse">
     <p> Ok, now I'm begging! We need beta testers. Somewhere I heard 3 is the sweet spot for inviting friends! Come on... I know you can do just one more!</p>
     
@@ -84,8 +88,10 @@
     <input type="email" id="email3" name="email3" placeholder="Last one... Promise">
     
     <button type="submit" class="btn btn-primary">Generate Message (for real)</button>
+    <br>
+    <br>
   </form>
-</div>
+</div><h5>Message preview</h5>
   <div id="messagePreview"></div>
   <div id="buttonContainer"></div>
 
@@ -101,7 +107,7 @@
       const email1 = document.getElementById('email1').value;
       const email2 = document.getElementById('email2').value;
       const email3 = document.getElementById('email3').value; 1 
-      const baseUrl = 'https://dymond.systems/share-2?name=';
+      const baseUrl = 'https://dymond.systems/share-2/REF-ID=9shwiv7ehd?name=';
       const url = baseUrl + encodeURIComponent(name);
 
       const subject = `Hello, ${name}!`;
