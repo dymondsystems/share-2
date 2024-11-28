@@ -107,8 +107,9 @@
       const email1 = document.getElementById('email1').value;
       const email2 = document.getElementById('email2').value;
       const email3 = document.getElementById('email3').value; 1 
-      const baseUrl = 'https://dymond.systems/share-2/?name=';
-      const url = baseUrl + encodeURIComponent(name);
+      const baseUrl = 'https://dymond.systems/share-2?name=';
+  const additionalParam = 'REF-ID-kdnc8dje0dbvb'; // Replace with your desired additional parameter
+  const url = baseUrl + encodeURIComponent(name) + '#' + encodeURIComponent(additionalParam);
 
       const subject = `Hello, ${name}!`;
       const body = `This is a test email. Check out this link: ${url}`;
