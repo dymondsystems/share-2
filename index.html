@@ -254,5 +254,10 @@ body {
       document.getElementById('nameDisplay').textContent = "A friend";
     }
   </script>
+      <script>
+const urlParams = new URLSearchParams(window.location.search);
+const name = urlParams.get('name');
 
-
+document.title = `Personalized Page for ${name}`;
+document.querySelector('meta[name="description"]').content = `Welcome, ${name}! This is your personalized page.`;
+      </script>
