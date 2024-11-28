@@ -1,24 +1,30 @@
 
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
- <title>Personalized [User Name] Page</title>
-  <meta name="description" content="Welcome, [User Name]! This is your personalized page.">
-<title></title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" 
-      type="image/png" 
-      href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Leaf_font_awesome.svg/1024px-Leaf_font_awesome.svg.png">
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>Personalized [User Name] Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" 
+        type="image/png" 
+        href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Leaf_font_awesome.svg/1024px-Leaf_font_awesome.svg.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Leaf_font_awesome.svg/1024px-Leaf_font_awesome.svg.png" />
+ 
+  <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const name = urlParams.get('name');
+
+  document.title = `Personalized Page for ${name}`;
+  document.querySelector('meta[name="description"]').content = `Welcome, ${name}! This is your personalized page.`;
+  </script>
+</head>
+
  
  
  
 
 
 
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Leaf_font_awesome.svg/1024px-Leaf_font_awesome.svg.png" />
+
 
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -251,10 +257,4 @@ body {
       document.getElementById('nameDisplay').textContent = "A friend";
     }
   </script>
-      <script>
-const urlParams = new URLSearchParams(window.location.search);
-const name = urlParams.get('name');
-
-document.title = `Personalized Page for ${name}`;
-document.querySelector('meta[name="description"]').content = `Welcome, ${name}! This is your personalized page.`;
-      </script>
+     
