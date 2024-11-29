@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Test</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" 
+      type="image/png" 
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Leaf_font_awesome.svg/1024px-Leaf_font_awesome.svg.png">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+ 
+ 
+ <meta property="og:title" content="Learning center" />
+<meta property="og:type" content="company" />
+<meta property="og:site_name" content="learning center " />
+<meta property="og:description" content=" Learning center 
+" />
+
+
+<meta property="og:url" content="Learning center" />
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Leaf_font_awesome.svg/1024px-Leaf_font_awesome.svg.png" />
+
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<html>
+<head>
+  <title>Dynamic Mailto and SMS Links</title>
+  <style>
+    #messagePreview {
+      border: 1px solid black;
+      padding: 10px;
+      margin-bottom: 0px;
+      width:400px;
+      height:200px;
+    }
+    .btn{
+      margin:1px;
+      }
+      p{
+      margin:1px;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+<h3>We need you...</h3>
+<p> We at stackboard appreciate you for getting this far, but the fact is, we need beta testers. We need to hurry up and find out if our platform sucks, doesn't suck, or what we can do to make it suck less.
+<br>
+<br>
+We need (you) to help develop a group of beta testers. If you have contacts to tech savy, business, and marketing minded folks, that's what we need.<strong> Ready to invite people?</strong>
+</p>
+<h5>Ok, Lets build a message!</h5>
+<br>
+
+
+<p><strong>Make your message more personable by adding your name as people know you by.</strong></p>
+  <form id="emailForm">
+    <label for="name"></label>
+    <input type="text" id="name" name="name" placeholder="Your name">
+    
+    <button type="button" class="btn btn-success pushme3 with-color" data-toggle="collapse" data-target="#demo9">Add name</button>
+   
+   
+    
+    
+  <div id="demo9" class="collapse">
+      
+    
+    <p><strong>Add a email contacts</strong></p>
+    <label for="email1"></label>
+    <input type="email" id="email1" name="email1" placeholder=" Email address">
+    
+    <button type="button" class="btn btn-success pushme3 with-color" data-toggle="collapse" data-target="#demo">Add contact</button>
+   
+    <div id="demo" class="collapse">
+  <button type="submit" class="btn btn-primary" data-target="#" data-toggle="collapse">Generate message</button>
+    
+    
+ 
+  <br>
+  <br>
+  <p> <strong>Before you generate your message... </strong>We would like to suggest that you add just one more. This is not begging mind you, this is a just simple suggestion. 
+  <br>
+  <br>As a matter of fact, it is a strict policy at stackboard to never ever, ever, under any circustmastances, beg users for anything!</p>
+    <label for="email2"></label>
+    <input type="email" id="email2" name="email2" placeholder="Email address">
+    
+    
+    <button type="button" class="btn btn-success pushme3 with-color" data-toggle="collapse" data-target="#demo2">Just one more</button>
+   <br>
+    <br> 
+  <div id="demo2" class="collapse">
+    <p> <strong>Ok, we're begging you! </strong>Please Please, Pretty Please with sugar on top add just one more! Come on... We know you can do just one extra. We're friggin BEGGING YOU!!!
+    <br>
+    <br>
+    Someone somewhere once said the magic number for inviting friends to a new platform is 3..... you're just one more away from making that happen and allowing us to test that, are you going to mess it up now?</p>
+    
+    <label for="email3"></label>
+    <input type="email" id="email3" name="email3" placeholder="Last one... Promise">
+    
+    <button type="submit" class="btn btn-primary">Generate Message (for real)</button>
+    <br>
+    <br>
+    </div>
+  </form>
+  </div>
+  </div>
+
+<h5>Message preview</h5>
+  <div id="messagePreview"></div>
+  <div id="buttonContainer"></div>
+</div>
+  <script>
+    const form = document.getElementById('emailForm');
+    const messagePreview = document.getElementById('messagePreview');
+    const buttonContainer = document.getElementById('buttonContainer');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email1 = document.getElementById('email1').value;
+      const email2 = document.getElementById('email2').value;
+      const email3 = document.getElementById('email3').value; 1 
+      const baseUrl = 'https://dymond.systems/share-2?name=';
+  const additionalParam = 'REF-ID-kdnc8dje0dbvb'; // Replace with your desired additional parameter
+  const url = baseUrl + encodeURIComponent(name) + '#' + encodeURIComponent(additionalParam);
+
+      const subject = `Hello, ${name}!`;
+      const body = `This is a test email. Check out this link: ${url}`;
+      const toAddresses = [email1, email2, email3].filter(email => email.trim() !== '');
+      const toAddressString = toAddresses.join(',');
+
+      const mailtoUrl = `mailto:${toAddressString}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const smsBody = `Hi ${name}, ${body}`;
+
+      messagePreview.textContent = `${body}`;
+
+      const mailtoButton = document.createElement('button');
+      mailtoButton.textContent = 'Send Email';
+      mailtoButton.classList.add('btn', 'btn-primary'); // Add Bootstrap classes
+      mailtoButton.onclick = () => {
+        window.location.href = mailtoUrl;
+      };
+
+      const smsButton = document.createElement('button');
+      smsButton.textContent = 'Send SMS';
+      smsButton.classList.add('btn', 'btn-secondary'); // Add Bootstrap classes
+      smsButton.onclick = () => {
+        window.location.href = `sms:?body=${encodeURIComponent(smsBody)}`;
+      };
+
+      buttonContainer.appendChild(mailtoButton);
+      buttonContainer.appendChild(smsButton);
+    });
+  </script>
+  <br>
+  <br>
+  <br>
+  <br>
+</body>
+</html>
