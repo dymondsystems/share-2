@@ -13,32 +13,28 @@
         "https://example.com/url3"
       ];
 
-      // Generate a unique user ID (consider using a more robust method if needed)
-      const userId = uuidv4();
+      // Generate a unique user ID based on device fingerprint and timestamp
+      const userId = generateFingerprint();
 
-      // Retrieve the last assigned index from local storage
-      const lastIndexString = localStorage.getItem('lastIndex_' + userId);
+      // Retrieve the assigned URL from local storage
+      const assignedUrlIndex = localStorage.getItem('assignedUrlIndex_' + userId);
 
-      let lastIndex = 0;
-      if (lastIndexString !== null) {
-        lastIndex = parseInt(lastIndexString);
+      if (assignedUrlIndex === null) {
+        // Assign a random URL and store it in local storage
+        const randomIndex = Math.floor(Math.random() * urls.length);
+        localStorage.setItem('assignedUrlIndex_' + userId, randomIndex);
+        const url = urls[randomIndex];
+        document.getElementById('uniqueUrl').textContent = url;
+      } else {
+        // Display the previously assigned URL
+        const url = urls[parseInt(assignedUrlIndex)];
+        document.getElementById('uniqueUrl').textContent = url;
       }
-
-      // Increment the index and wrap around if necessary
-      lastIndex++;
-      if (lastIndex >= urls.length) {
-        lastIndex = 0;
-      }
-
-      // Store the updated index in local storage
-      localStorage.setItem('lastIndex_' + userId, lastIndex);
-
-      const url = urls[lastIndex];
-      document.getElementById('uniqueUrl').textContent = url;
     }
 
-    function uuidv4() {
-      return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)); 1 
+    function generateFingerprint() {
+      // A more robust fingerprint generation method can be implemented
+      return navigator.userAgent + screen.width + screen.height + navigator.language;
     }
 
     assignUniqueUrl();
