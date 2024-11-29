@@ -17,22 +17,24 @@
       const userId = uuidv4();
 
       // Retrieve the last assigned index from local storage
-      const lastIndex = localStorage.getItem('lastIndex_' + userId);
+      const lastIndexString = localStorage.getItem('lastIndex_' + userId);
 
-      if (lastIndex === null) {
-        // Assign the first URL and store the index
-        const index = 0;
-        localStorage.setItem('lastIndex_' + userId, index);
-        document.getElementById('uniqueUrl').textContent = urls[index];
-      } else {
-        // Increment the index and wrap around if necessary
-        let index = parseInt(lastIndex) + 1;
-        if (index >= urls.length) {
-          index = 0;
-        }
-        localStorage.setItem('lastIndex_' + userId, index);
-        document.getElementById('uniqueUrl').textContent = urls[index];
+      let lastIndex = 0;
+      if (lastIndexString !== null) {
+        lastIndex = parseInt(lastIndexString);
       }
+
+      // Increment the index and wrap around if necessary
+      lastIndex++;
+      if (lastIndex >= urls.length) {
+        lastIndex = 0;
+      }
+
+      // Store the updated index in local storage
+      localStorage.setItem('lastIndex_' + userId, lastIndex);
+
+      const url = urls[lastIndex];
+      document.getElementById('uniqueUrl').textContent = url;
     }
 
     function uuidv4() {
