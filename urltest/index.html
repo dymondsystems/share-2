@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unique URL Assignment</title>
+</head>
+<body>
+  <p id="uniqueUrl"></p>
+  <script>
+    function assignUniqueUrl() {
+      const urls = [
+        "https://example.com/url1",
+        "https://example.com/url2",
+        "https://example.com/url3"
+      ];
+
+      // Generate a unique user ID (consider using a more robust method if needed)
+      const userId = uuidv4();
+
+      // Retrieve the last assigned index from local storage
+      const lastIndex = localStorage.getItem('lastIndex_' + userId);
+
+      if (lastIndex === null) {
+        // Assign the first URL and store the index
+        const index = 0;
+        localStorage.setItem('lastIndex_' + userId, index);
+        document.getElementById('uniqueUrl').textContent = urls[index];
+      } else {
+        // Increment the index and wrap around if necessary
+        let index = parseInt(lastIndex) + 1;
+        if (index >= urls.length) {
+          index = 0;
+        }
+        localStorage.setItem('lastIndex_' + userId, index);
+        document.getElementById('uniqueUrl').textContent = urls[index];
+      }
+    }
+
+    function uuidv4() {
+      return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)); 1 
+    }
+
+    assignUniqueUrl();
+  </script>
+</body>
+</html>
